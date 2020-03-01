@@ -1,0 +1,167 @@
+
+$(document).ready(function () {
+    // Loading();
+    FixedHeader();
+    ContentBanner();
+    VideoLightbox();
+    // onYouTubePlayerAPIReady();
+    SliderMoment();
+
+    $(window).on('resize', function () {
+        ContentBanner();
+    });
+
+    $('#ld-slider').nivoSlider({
+        effect: 'fade'
+    });
+
+});
+
+function SliderMoment() {
+    $('.slider-moment').on('init', function (e, slick) {
+        HeightMoment();
+    })
+
+    $('.slider-moment').slick({
+        dots: true,
+        arrows: false,
+    });
+
+}
+
+function HeightMoment() {
+    var item = $('.slider-moment-item-inner'),
+        heightest = 0;
+
+    $(window).on('resize', function () {
+        var winW = $(this).width()
+
+        if (winW >= 768) {
+            item.each(function () {
+                var thisHeight = $(this).outerHeight(true);
+
+
+                if (thisHeight > heightest) {
+                    heightest = thisHeight
+                }
+                $(this).css('height', heightest)
+
+            })
+        }
+    }).trigger('resize')
+
+}
+
+function Loading() {
+    setTimeout(function () {
+        $('#loading').fadeOut()
+    }, 1000);
+}
+
+function FixedHeader() {
+    var lastTop = 0;
+    var _hd = $('header');
+    var _hdHeight = _hd.outerHeight(true);
+    $(window).on('scroll', function () {
+        var valScroll = $(this).scrollTop();
+
+        if (_hd.length) {
+            if (valScroll > _hdHeight && valScroll > lastTop) {
+
+                _hd.stop(true, true).addClass('header-scroll').removeClass('header-showdown');
+
+            } else if (_hd.hasClass('header-scroll')) {
+                _hd.css({
+                    'visibility': ''
+                });
+
+                _hd.stop(true, true).removeClass('header-scroll').addClass('header-showdown');
+            }
+
+            if (valScroll == 0) {
+                _hd.stop(true, true).removeClass('header-showdown');
+            }
+        }
+        lastTop = valScroll;
+    })
+}
+
+function ContentBanner () {
+    var ctnW = $('.ld-hd .container').width();
+    var win_w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var win_h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    var ctnSlide = $('.ld-slider-ctn');
+    var leftCtn = parseInt((ctnW - (ctnW * 0.8)) / 2 - 20);
+
+    ctnSlide.css('width', ctnW);
+
+    if (win_w <= 992 && win_w >= 781) {
+        ctnSlide.css('left', -leftCtn).addClass('visible')
+    } else {
+        ctnSlide.css('left', '').addClass('visible')
+    }
+}
+
+function VideoLightbox() {
+    var item = $('.ld-item-inner'),
+        popup = $('.ld-video'),
+        closeBtn = $('.closepopup'),
+        overlay = $('.overlay');
+
+    closeBtn.on('click', function () {
+        var parent_vd = $(this).parents('.ld-video');
+
+        overlay.removeClass('overlay-active');
+        parent_vd.hide();
+    });
+
+    overlay.on('click', function () {
+        $(this).removeClass('overlay-active');
+        popup.css('display','');
+    });
+
+    item.off('click').each(function () {
+        $(this).on('click', function () {
+            var _this = $(this);
+            var dataId = _this.attr('data-popup');
+
+            popup.css('display','');
+
+            if (dataId != '' && dataId != undefined) {
+                $('#' + dataId).show();
+                overlay.addClass('overlay-active');
+            } else {
+                $('#' + dataId).hide();
+                overlay.removeClass('overlay-active');
+            }
+        });
+    });
+}
+
+// https://developers.google.com/youtube/iframe_api_reference
+
+// global variable for the player
+
+// Inject YouTube API script
+var tag = document.createElement('script');
+tag.src = "//www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// this function gets called when API is ready to use
+function onYouTubePlayerAPIReady() {
+    var item_video = $('.ld-video .ld-video-inner');
+    $(item_video).each(function () {
+        var player_id = $(this).find('iframe').attr("id");
+
+        var player = new YT.Player( player_id, {
+            events: {
+                'onReady': function (event) {
+                    $('.closepopup, .overlay').on('click', function () {
+                        player.stopVideo();
+                    });
+                }
+            }
+        });
+    });
+}

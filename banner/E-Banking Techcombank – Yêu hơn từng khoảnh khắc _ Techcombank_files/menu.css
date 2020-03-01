@@ -1,0 +1,258 @@
+﻿@charset "UTF-8";
+/* CSS Document */
+
+.mainnav {
+    position: relative;
+    z-index: 100;
+}
+
+    .mainnav .submenu {
+        position: absolute;
+        top: 52px !important;
+        width: 938px;
+        left: 0;
+        z-index: 90;
+        background: #fff;
+        border-left: solid 1px #e2e2e2;
+        border-right: solid 1px #e2e2e2;
+        border-bottom: solid 1px #e2e2e2;
+        padding: 20px 20px 25px;
+        list-style-type: none;
+        float: left;
+        font-size: 16px;
+        display: none;
+    }
+
+    .mainnav .aboutus {
+        left: auto;
+        right: 0;
+        width: 465px;
+    }
+
+    .mainnav .submenu ul {
+        list-style-type: none;
+        float: left;
+    }
+
+    * + html .mainnav .submenu {
+        left: -39px;
+    }
+
+    * + html .mainnav .aboutus {
+        left: auto;
+        right: 0;
+    }
+
+    .mainnav > li.active {
+        background-color: #fff;
+        height: 52px !important;
+    }
+
+    .mainnav > li:first-child {
+        height: 50px !important;
+    }
+
+    .mainnav > li.active a {
+        background-color: #fff;
+        color: #ed1c24;
+    }
+
+    .mainnav > li.active .dropnav {
+        background: url("../images/arrow_menu_top_select.gif") no-repeat scroll center 35px;
+    }
+
+    .mainnav > li.mnu-priority.active {
+        background: #ba131d !important;
+        height: 52px !important;
+    }
+
+        .mainnav > li.mnu-priority.active a {
+            color: #fff;
+        }
+
+            .mainnav > li.mnu-priority.active a.dropnav {
+                background-color: transparent !important;
+                background: url("../images/arrow_priority_select.gif") no-repeat scroll center 35px;
+            }
+
+    .mainnav .current a {
+        background-color: #fff;
+        color: #ed1c24;
+    }
+
+        .mainnav .current a.dropnav {
+            height: 52px;
+            background-color: #fff !important;
+        }
+
+    .mainnav .current .submenu {
+        display: block;
+    }
+
+    .mainnav > li .dropnav {
+        background: url("../images/arrow_gray.gif") no-repeat scroll center 35px;
+    }
+
+    .mainnav > li.current .dropnav {
+        background: url("../images/arrow_menu_top_select.gif") no-repeat scroll center 35px;
+    }
+
+    .mainnav .submenu > li.submenu-left, .mainnav .submenu > li.submenu-alone {
+        float: left;
+        padding-right: 25px;
+        width: 707px;
+        text-align: left;
+        overflow: hidden;
+    }
+
+    .mainnav .submenu > li.submenu-left {
+        border-right: solid 1px #e3e3e3;
+    }
+
+    .mainnav .aboutus > li.submenu-left {
+        width: 225px;
+    }
+
+    .mainnav .submenu-left ul {
+        width: 760px;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        clear: both;
+        margin-top: 10px;
+    }
+
+
+    .mainnav .aboutus .submenu-left ul {
+        width: auto;
+    }
+
+    .mainnav .submenu-left ul li {
+        float: left;
+        width: 211px;
+        margin-right: 40px;
+        height: 45px;
+        text-align: left;
+        border-bottom: solid 1px #dfdfdf;
+        margin-bottom: 20px;
+        position: relative;
+        display: table;
+    }
+
+    .mainnav .aboutus > li.submenu-left li {
+        float: none;
+    }
+
+    .mainnav .submenu-left ul li .submenu-icon {
+        position: relative;
+        vertical-align: middle;
+        display: table-cell;
+    }
+
+    /* hack css ie7 */
+    * + html .mainnav .submenu-left ul li .submenu-icon {
+        float: left;
+        position: relative;
+        top: 50%;
+    }
+
+        * + html .mainnav .submenu-left ul li .submenu-icon img {
+            position: relative;
+            top: -50%;
+        }
+
+    .mainnav .submenu-left ul li .submenu-text {
+        padding-left: 10px;
+        display: table-cell;
+        vertical-align: middle;
+        width: 169px;
+    }
+
+    /* hack css ie7 */
+    * + html .mainnav .submenu-left ul li .submenu-text {
+        position: absolute;
+        top: 50%;
+    }
+
+        .mainnav .submenu-left ul li .submenu-text a {
+            color: #333333;
+            margin: 0;
+            display: block;
+            font-size: 16px;
+        }
+        /* hack css ie7 */
+        * + html .mainnav .submenu-left ul li .submenu-text a {
+            position: relative;
+            top: -50%;
+        }
+
+    .mainnav .submenu > li.submenu-left h3 {
+        margin: 0;
+        font-size: 16px;
+        color: #4e4e4e;
+        font-weight: normal;
+        font-style: italic;
+        border-bottom: solid 1px #dfdfdf;
+        padding-bottom: 8px;
+    }
+
+    .mainnav .submenu li.submenu-right {
+        float: right;
+        padding: 0 0 0 20px;
+        width: 184px;
+        text-align: left;
+        font-size: 15px;
+    }
+
+    .mainnav .submenu > li.submenu-right h3, .h3 {
+        padding: 0;
+        margin: 0;
+        color: #ed1c24;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+
+    .mainnav .mnu-priority .submenu > li.submenu-right h3 {
+        color: #ba131d;
+    }
+
+
+    .mainnav .submenu > li.submenu-right p {
+        margin: 8px 0;
+    }
+
+    .mainnav .submenu > li.submenu-right .readmoreAds {
+        margin-top: 10px;
+        text-align: left;
+    }
+
+        .mainnav .submenu > li.submenu-right .readmoreAds a {
+            background: url("../images/arrow_readmore_red.png") no-repeat scroll right center;
+            color: #ED1C24;
+            display: inline-block;
+            font-weight: bold;
+            padding: 0 12px 0 0;
+            font-size: 12px;
+            zoom: 1;
+            *display: inline;
+        }
+
+.mnu-priority .submenu > li.submenu-right .readmoreAds a {
+    color: #ba131d;
+}
+
+.mainnav > li.mnu-priority.current {
+    background: #ba131d !important;
+    height: 52px !important;
+}
+
+    .mainnav > li.mnu-priority.current a {
+        color: #fff;
+    }
+
+        .mainnav > li.mnu-priority.current a.dropnav {
+            background-color: transparent !important;
+            background: url("../images/arrow_priority_select.gif") no-repeat scroll center 35px;
+            height: 50px;
+        }
